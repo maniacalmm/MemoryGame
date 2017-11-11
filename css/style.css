@@ -102,15 +102,17 @@ img {
     height: 100%;
     left: 0;
     top: 0;
-    background-color: #e0d8b3;
+    background-color: #eee;
 }
 
 .modal-content {
-    background-color: #cc0846;
-    margin: auto;
+    position: absolute;
+    background-color: #18896b;
+    top: 25%;
+    left: 33%;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+    width: 33%;
+    height: 40%;
 }
 
 #popupbtn {
@@ -120,7 +122,7 @@ img {
   font-family: Arial;
   color: #ffffff;
   font-size: 20px;
-  background: #3498db;
+  background: #e01d1d;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
 }

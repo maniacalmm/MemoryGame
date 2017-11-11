@@ -3,7 +3,7 @@ var dimension = 4;
 var flip1 = null;
 var flip2 = null;
 var start = false;
-var startTime = 0;
+var timeElapse = 0;
 var moves = 0;
 var targets = 0;
 var oneStar = "&#9734";
@@ -136,9 +136,8 @@ function createGrid(dimension) {
 
 /********************** Success effect  *****************************************/
 function completion() {
-    changeValue('popup_time', (new Date().getTime() - startTime) / 1000);
+    changeValue('popup_time', timeElapse);
     changeValue('popup_star', getStar(moves));
-    console.log($('.modal').css('display'));
     $('#popup').css('display', 'block');
 }
 
@@ -159,7 +158,7 @@ function moveAndStar(moves) {
 }
 
 function changeTime() {
-  document.getElementById("timer").innerHTML = ++value;
+  document.getElementById("timer").innerHTML = ++timeElapse;
 }
 
 function changeValue(id, value) {
@@ -169,7 +168,7 @@ function changeValue(id, value) {
 var timerInterval = null;
 function timerCount() {
   stop(); // stoping the previous counting (if any)
-  value = 0;
+  timeElapse = 0;
   timerInterval = setInterval(changeTime, 1000);
 }
 var stop = function() {
@@ -215,6 +214,12 @@ $('#popupbtn').click(function() {
     start = true;
     addpre_show();
 });
+
+$('#testbtn').click(function() {
+    completion();
+});
+
+
 
 
 
