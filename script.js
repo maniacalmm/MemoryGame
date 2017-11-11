@@ -10,6 +10,7 @@ var oneStar = "&#9734";
 var twoStar = "&#9734 &#9734";
 var threeStar = "&#9734 &#9734 &#9734";
 
+/******************* generate random card name sequence *********/
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
@@ -31,6 +32,7 @@ function imageGenerator(totalPictureNumber) {
     return images;
 }
 
+/************************* when both cards are flipped, decision making *****/
 function flipBack() {
     if (flip1 != null && flip2 != null) {
         if (flip1.getAttribute('src') === flip2.getAttribute('src')) {
@@ -59,14 +61,7 @@ function showCard(card) {
     $(card).addClass('show');
 }
 
-function wait(ms){
-   var start = new Date().getTime();
-   var end = start;
-   while(end < start + ms) {
-     end = new Date().getTime();
-  }
-}
-
+/************************ close all cards ****************/
 function resetCard() {
     console.log('reseting cards');
     $('#canvas').find('tr').each(function() {
@@ -76,6 +71,7 @@ function resetCard() {
     });
 }
 
+/******************** reset and shuffle card *************/
 function shuffleGrid(dimension) {
     moves = 0;
     resetCard();
@@ -92,7 +88,7 @@ function shuffleGrid(dimension) {
         });
     });
 }
-
+/******************* create the intial grid *********************/
 // input has to be an even number, other wise it won't work
 function createGrid(dimension) {
     // generate images, and shuffle them
@@ -174,7 +170,7 @@ function timerCount() {
 var stop = function() {
   clearInterval(timerInterval);
 }
-/**********************************************************************************/
+
 function addpre_show() {
     $('#canvas').find('tr').each(function() {
         $(this).find('td').each(function() {
@@ -184,19 +180,17 @@ function addpre_show() {
         });
     });
 }
-
+/********************************** start the game *********************************/
 createGrid(dimension); // intialized the grid
 
 // monitoring any change over <td>
 // if this one is set to click, then the picture won't appear before disappear
 // no solution yet
-$('td').on('mousemove', function() {
+$('td').on('mouseleave', function() {
     setTimeout(flipBack(), 1000);
 });
 
-
 $('#reset').on('mouseleave', addpre_show());
-
 
 // monitoring reset button
 $('#reset').on('click', function() {
