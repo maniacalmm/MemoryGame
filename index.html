@@ -1,19 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Memory Game</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
-	<div id="card">
-		<div class="front">
-			<img src="img/1.jpg" alt="logo_1">
-		</div>
-		<div class="back">
-			Back content
-		</div>
-	</div>
+    <h2 class="caption">Memory Game</h2>
+    <div class="plane">
+        <div class="col_1 counter"> <span></span> timer : <span id="timer"> 0 </span></div>
+        <div class="col_2"><input id="reset" type="image" width="50px" height="50px" src="img/r.png"></div>
+        <div class="col_3 info">
+            <div class="sub_info">
+                <div class="sub_col_1"> <span>moves : </span> <span id="move"> 0 </span></div>
+                <div class="sub_col_2"> <span id="star"> </span> </div>
+            </div>
+        </div>
+    </div>
+	<table cellspacing="0" id="canvas">
+	</table>
+
+    <button id="testbtn"> test popup </button>
+
+    <div id="popup" class="modal">
+        <div class="modal-content">
+        <p> Congrats, you did it in <span id="popup_time"></span> <span>seconds</span></p>
+        <p id="popup_star"></p>
+
+        <button id="popupbtn" type="button"> Next Round </button>
+        </div>
+    </div>
+
 	<script src="script.js"></script>
 </body>
 </html>

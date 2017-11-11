@@ -1,0 +1,21 @@
+img {
+    width: 100px;
+    height: 100px;
+}
+
+tr {
+    padding: 10px;
+    background-color: #5b626d
+}
+
+img {
+    transform: rotateY(-90deg);
+    transition: all 0.5s ease-out;
+    transform-style: preserve-3d;
+}
+
+.show {
+    transform: rotateY(0deg);
+    transition: all 0.5s ease-in;
+    transform-style: preserve-3d;
+}

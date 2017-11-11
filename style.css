@@ -1,3 +1,54 @@
-img {
-	align-content: center;
+
+body {
+    text-align: center;
 }
+
+#canvas {
+    /*border-collapse: separate;*/
+    margin: auto;
+    background-color: white;
+    border-radius: 15px;
+    /*border-collapse: collapse;*/
+    border: 30px solid #3a3539;
+}
+
+
+td {
+    background-color: #e8deed;
+    padding: 13px;
+    border: 15px solid #3a3539;
+}
+
+img {
+    width: 120px;
+    height: 120px;
+}
+
+img {
+    transform: rotateY(-90deg);
+    transition: all 0.5s ease-in;
+    transform-style: preserve-3d;
+}
+
+.show {
+    transform: rotateY(0deg);
+    transition: all 0.5s ease-out;
+    transform-style: preserve-3d;
+}
+
+.plane {
+    display: flex;
+    justify-content: space-between;
+}
+
+.plane .col_1 {
+    width: 33%;
+}
+.plane .col_2 {
+    width: 33%;
+}
+.plane .col_3 {
+    width: 33%;
+}
+
+
