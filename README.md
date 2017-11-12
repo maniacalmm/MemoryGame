@@ -1,3 +1,10 @@
+## Resources
+index.html, script.js, css/styles.css are the three main files.
+img folder contains image necessary for the card for display.
+Player can choose to replace these images of his/her own is he/she so desire.
+
+
+## How the game work
 Memory game, flip two card at the time, if the two are the same, stay flipped, otherwise, fold back.
 
 Intial dimension of the game is 4x4, thus inside the img folder, 8 images are used for the cards(log_1.png -> log_8.log).
@@ -9,3 +16,7 @@ During the game, if the two cards are not the same, then the two cards will fold
 When successfully completing the game, a pop-up windows will appear giving the game stats to the player and asking if he/she want another round.
 
 Stars at the left-top corner represents how good you are at this game, meaning, smaller the moves players made to complete the game, higher the star, if player finished the game using less than 32 moves, 3 star will be given, less than 64 but larger than 32 moves, 2 star, one star for moves above 64 moves.
+
+## How to load and start the game
+Simply pull the repo to your local machine, keep it in one file, and open the index.html in you browser!(Google Chrome preferrably.), for the first time(or each time you refresh the page), player need to hit the reset(circle) button to start. When completing the game successfully, player can continue the next round by click the button in the pop-up window, this time, it's not necessary to click the circle button again, you can start the game again directly.
+
