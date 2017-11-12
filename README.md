@@ -18,5 +18,7 @@ When successfully completing the game, a pop-up windows will appear giving the g
 Stars at the left-top corner represents how good you are at this game, meaning, smaller the moves players made to complete the game, higher the star, if player finished the game using less than 32 moves, 3 star will be given, less than 64 but larger than 32 moves, 2 star, one star for moves above 64 moves.
 
 ## How to load and start the game
-Simply pull the repo to your local machine, keep it in one file, and open the index.html in you browser!(Google Chrome preferrably.), for the first time(or each time you refresh the page), player need to hit the reset(circle) button to start. When completing the game successfully, player can continue the next round by click the button in the pop-up window, this time, it's not necessary to click the circle button again, you can start the game again directly.
+Simply pull the repo to your local machine, keep it in one file, and open the index.html in you browser!(Google Chrome preferrably.).
+
+For the first time(or each time you refresh the page), player need to hit the reset(circle) button to start. When completing the game successfully, player can continue the next round by click the button in the pop-up window, this time, it's not necessary to click the circle button again, you can start the game again directly.
 
