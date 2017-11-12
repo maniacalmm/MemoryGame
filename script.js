@@ -155,25 +155,24 @@ function completion() {
 // 32 - 64 --> 2 star;
 // above 64 --> 1 star;
 
+
+// calculate start from the moves made by player
 function getStar(moves) {
     if (moves > 64) return oneStar;
     else if (moves > 32) return twoStar;
     else return threeStar;
 }
 
+
+// to update moves and star according to the moves made
 function moveAndStar(moves) {
     changeValue('move', moves);
     changeValue('star', getStar(moves));
 }
 
-function changeTime() {
-  document.getElementById("timer").innerHTML = ++timeElapse;
-}
-
-function changeValue(id, value) {
-    document.getElementById(id).innerHTML = value;
-}
-
+/****************** Timer function ********************/
+// timer function is essentially based on setInterval function
+// which is built-in in javascript
 var timerInterval = null;
 function timerCount() {
     console.log('timer called ' + moves);
@@ -182,6 +181,8 @@ function timerCount() {
   timerInterval = setInterval(changeTime, 1000);
   console.log('setInterval: ' + timerInterval);
 }
+
+// to stop the counting using clearInterval
 var stop = function() {
     console.log("stopping clock : " + timerInterval);
     if (timerInterval != null)
@@ -189,6 +190,19 @@ var stop = function() {
     console.log('stopped clock: ' + timerInterval);
 }
 
+// change time function by updating the html file directly
+function changeTime() {
+  document.getElementById("timer").innerHTML = ++timeElapse;
+}
+/*****************************************************/
+
+// change the value of html give the id and value we want to change
+function changeValue(id, value) {
+    document.getElementById(id).innerHTML = value;
+}
+
+
+// add the flipping class
 function addpre_show() {
     $('#canvas').find('tr').each(function() {
         $(this).find('td').each(function() {
@@ -211,6 +225,7 @@ $('td').on('mouseleave', function() {
     setTimeout(flipBack(), 1000);
 });
 
+// upon leaving the button, pre_show class is added to all the img cell
 $('#reset').on('mouseleave', function() {
     addpre_show();
 });
@@ -228,7 +243,7 @@ $('#popupbtn').click(function() {
     $('#popup').css('display', 'none');
     //stop();
     start = true;
-    addpre_show();
+    addpre_show(); // the next around can be directly started without touching the reset button
 });
 
 
