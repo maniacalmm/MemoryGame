@@ -1,5 +1,5 @@
 ## Memory Game
-Memory game is a simply card-flip game based on your browser!!.
+Memory game is a simple card-flip game your can play in your browser!!.
 
 ## Resources
 - index.html, script.js, css/styles.css are the three main files for the game to work.
