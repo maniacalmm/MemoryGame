@@ -1,3 +1,10 @@
+/*
+Card flip is done by adding or moving the class for img element
+show class shows the card
+pre_show class is the folding effect
+*/
+
+
 var imgPath = 'img/';
 var dimension = 4;
 var flip1 = null;
@@ -34,23 +41,19 @@ function imageGenerator(totalPictureNumber) {
 
 /************************* when both cards are flipped, decision making *****/
 function flipBack() {
-    if (flip1 != null && flip2 != null) {
-        if (flip1.getAttribute('src') === flip2.getAttribute('src')) {
-            targets++;
+    if (flip1 != null && flip2 != null) { // if there are two cards flipped
+        if (flip1.getAttribute('src') === flip2.getAttribute('src')) { // if the two matches
+            targets++;      //increase the flipped count
             if (targets == dimension * dimension / 2) {
                 completion(); // completed
                 targets = 0;
             }
-        } else {
-            console.log('not a match!');
-            console.log(flip1.classList + " " + flip2.classList);
+        } else {            // two cards does not match, flip back
             $(flip1).removeClass('show');
             $(flip2).removeClass('show');
             $(flip1).addClass('pre_show');
             $(flip2).addClass('pre_show');
-            console.log($(flip1).attr('class'));
         }
-        console.log('about to delete');
         flip1 = null;
         flip2 = null;
     }
@@ -62,8 +65,8 @@ function showCard(card) {
 }
 
 /************************ close all cards ****************/
+// resetCard is used to fastly close all the card when reset button is clicked
 function resetCard() {
-    console.log('reseting cards');
     $('#canvas').find('tr').each(function() {
         $(this).find('td').each(function() {
             $(this).find('img').removeClass('show');
@@ -72,9 +75,13 @@ function resetCard() {
 }
 
 /******************** reset and shuffle card *************/
+// in shuffleGrid, we generate a new sequence of card, and replace the current grid with the
+// the new one
 function shuffleGrid(dimension) {
     moves = 0;
+    timeElapse = 0;
     resetCard();
+
     changeValue('timer', 0);
     changeValue('move', moves);
     changeValue('star', threeStar);
@@ -87,6 +94,11 @@ function shuffleGrid(dimension) {
             $(this).find('img').attr('src', tmpImg.pop());
         });
     });
+
+    stop(); // stop the timer
+    flip1 = null;
+    flip2 = null;
+
 }
 /******************* create the intial grid *********************/
 // input has to be an even number, other wise it won't work
@@ -97,6 +109,7 @@ function createGrid(dimension) {
 
     $('#star').html(threeStar);
 
+    // two for-loops to generate the overall grid
     for (let i = 0; i < dimension; i++) {
         let row = document.createElement('tr');
         $('#canvas').append(row);
@@ -107,16 +120,16 @@ function createGrid(dimension) {
             img.setAttribute('src', tmpImg.pop());
             imgDiv.setAttribute('class', 'card');
 
+            // adding eventlistener to each td cell
             imgDiv.addEventListener('click', function() {
                 let len = img.classList.length;
-
+                console.log('clicked: ' + len + " " + img.classList[0] + " " + start);
                 if (len == 1 && img.classList[0] == 'pre_show' && start) { // this one is not open yet
-                    if (start) {
+                    if (start) { // start represent if the start/reset button has been pushed
                         moves++;        // counting the valid move
+                        if (moves == 1) timerCount();
                         moveAndStar(moves);
                     }
-
-                    console.log('show cards');
                     showCard(img);
                     if (flip1 == null) flip1 = img;
                     else flip2 = img;
@@ -163,20 +176,28 @@ function changeValue(id, value) {
 
 var timerInterval = null;
 function timerCount() {
+    console.log('timer called ' + moves);
   stop(); // stoping the previous counting (if any)
   timeElapse = 0;
   timerInterval = setInterval(changeTime, 1000);
+  console.log('setInterval: ' + timerInterval);
 }
 var stop = function() {
-  clearInterval(timerInterval);
+    console.log("stopping clock : " + timerInterval);
+    if (timerInterval != null)
+        clearInterval(timerInterval);
+    console.log('stopped clock: ' + timerInterval);
 }
 
 function addpre_show() {
     $('#canvas').find('tr').each(function() {
         $(this).find('td').each(function() {
-            console.log('something');
-            $(this).find('img').addClass('pre_show');
+            //console.log('something');
             console.log($(this).find('img').attr('class'));
+            if (!$(this).find('img').hasClass('show')
+                && !$(this).find('img').hasClass('pre_show'))
+                $(this).find('img').addClass('pre_show');
+            //console.log($(this).find('img').attr('class'));
         });
     });
 }
@@ -190,11 +211,12 @@ $('td').on('mouseleave', function() {
     setTimeout(flipBack(), 1000);
 });
 
-$('#reset').on('mouseleave', addpre_show());
+$('#reset').on('mouseleave', function() {
+    addpre_show();
+});
 
 // monitoring reset button
 $('#reset').on('click', function() {
-    timerCount();
     start = true;
     shuffleGrid(dimension);
 });
@@ -204,13 +226,9 @@ $('#reset').on('click', function() {
 $('#popupbtn').click(function() {
     shuffleGrid(dimension);
     $('#popup').css('display', 'none');
-    timerCount();
+    //stop();
     start = true;
     addpre_show();
-});
-
-$('#testbtn').click(function() {
-    completion();
 });
 
 
