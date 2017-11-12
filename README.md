@@ -1,7 +1,19 @@
+## Memory Game
+Memory game is a simply card-flip game based on your browser!!.
+
 ## Resources
-index.html, script.js, css/styles.css are the three main files.
+index.html, script.js, css/styles.css are the three main files for the game to work.
+
 img folder contains image necessary for the card for display.
-Player can choose to replace these images of his/her own is he/she so desire.
+Player can choose to replace these images of his/her own if he/she so desire.
+
+Jquery is used for this game.
+
+## Installation
+Clone this repo to your local machine, and open the index.html in your browser.(Google Chrome preferably)
+~~~
+https://github.com/maniacalmm/MemoryGame.git
+~~~
 
 
 ## How the game work
@@ -11,14 +23,10 @@ Intial dimension of the game is 4x4, thus inside the img folder, 8 images are us
 
 Little circle on top is the reset button, if clicked, all cards will fold back, and the timer and score will be reset to zero, player need to click the button first time playing.
 
-During the game, if the two cards are not the same, then the two cards will fold back when the cursor is move outside of the cell.
+During the game, if the two cards are not the same, then the two cards will fold back when the cursor is <em>moved outside of the cell</em>.
 
 When successfully completing the game, a pop-up windows will appear giving the game stats to the player and asking if he/she want another round.
 
-Stars at the left-top corner represents how good you are at this game, meaning, smaller the moves players made to complete the game, higher the star, if player finished the game using less than 32 moves, 3 star will be given, less than 64 but larger than 32 moves, 2 star, one star for moves above 64 moves.
+Stars at the left-top corner represents how good you are at this game, smaller number of flips you made, higer the star you get.
 
-## How to load and start the game
-Simply pull the repo to your local machine, keep it in one file, and open the index.html in you browser!(Google Chrome preferrably.).
-
-For the first time(or each time you refresh the page), player need to hit the reset(circle) button to start. When completing the game successfully, player can continue the next round by click the button in the pop-up window, this time, it's not necessary to click the circle button again, you can start the game again directly.
 
